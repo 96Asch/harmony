@@ -1,1 +1,0 @@
-("56b29075abaa16236fd08489216c0bb7d5e4a3cb",["src-generated/webdsl/generated/templates/one_Template.java"],Define([Template],"one"{OriginalNameAnno("one")},[],None,[Text("1")]){TemplateClassName("one_Template"),SessionEntities([]),PositionAnno("../imported.app:3/2"),IsOptimized,[],At("../imported.app",3,1)})
