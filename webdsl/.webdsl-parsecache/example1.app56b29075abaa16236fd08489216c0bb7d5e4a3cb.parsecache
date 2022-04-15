@@ -1,1 +1,0 @@
-ApplicationDefs("example1"{At("../example1.app",1,13)},[DefinePage([],"root"{At("../example1.app",3,6)},[]{At("../example1.app",3,11)},None{At("../example1.app",3,11)},[Text("welcome to wdsl"{At("../example1.app",4,4)}){At("../example1.app",4,3)}]){At("../example1.app",3,1)}],[]){At("../example1.app",1,1)}
