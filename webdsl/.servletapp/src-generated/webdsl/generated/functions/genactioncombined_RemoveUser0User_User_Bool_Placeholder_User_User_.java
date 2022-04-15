@@ -1,6 +1,0 @@
-package webdsl.generated.functions;
-@SuppressWarnings("all")public class genactioncombined_RemoveUser0User_User_Bool_Placeholder_User_User_{
-public static Boolean genactioncombined_RemoveUser0User_User_Bool_Placeholder_User_User_(webdsl.generated.domain.User genuniquevar33_,webdsl.generated.domain.User genuniquevar34_,Boolean genuniquevar35_,String genuniquevar36_,webdsl.generated.domain.User e_,webdsl.generated.domain.User u_){
-return webdsl.generated.functions.genactionpredicate_RemoveUser0User_User_.genactionpredicate_RemoveUser0User_User_(e_,u_)&&webdsl.generated.functions.genactionpredicate_removeMemberButton__0User_User_Bool_Placeholder_.genactionpredicate_removeMemberButton__0User_User_Bool_Placeholder_(genuniquevar33_,genuniquevar34_,genuniquevar35_,genuniquevar36_);
-}
-}

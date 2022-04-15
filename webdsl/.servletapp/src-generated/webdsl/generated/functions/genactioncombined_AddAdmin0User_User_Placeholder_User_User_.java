@@ -1,6 +1,0 @@
-package webdsl.generated.functions;
-@SuppressWarnings("all")public class genactioncombined_AddAdmin0User_User_Placeholder_User_User_{
-public static Boolean genactioncombined_AddAdmin0User_User_Placeholder_User_User_(webdsl.generated.domain.User genuniquevar9_,webdsl.generated.domain.User genuniquevar10_,String genuniquevar11_,webdsl.generated.domain.User e_,webdsl.generated.domain.User u_){
-return webdsl.generated.functions.genactionpredicate_AddAdmin0User_User_.genactionpredicate_AddAdmin0User_User_(e_,u_)&&webdsl.generated.functions.genactionpredicate_memberButtonBar__0User_User_Placeholder_.genactionpredicate_memberButtonBar__0User_User_Placeholder_(genuniquevar9_,genuniquevar10_,genuniquevar11_);
-}
-}
