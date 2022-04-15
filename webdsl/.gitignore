@@ -1,0 +1,6 @@
+#webdsl
+.cache
+.servletapp
+.settings
+.webdsl-fragment-cache
+.webdsl-parsecache
