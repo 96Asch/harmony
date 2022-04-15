@@ -1,0 +1,217 @@
+.icon {
+	width: 40px;
+	height: 40px;
+	filter: brightness(0) invert(1);
+}
+
+.invite-icon {
+	width: 15px;
+	height: 15px;
+	filter: brightness(0) invert(1);
+}
+
+.button-icon {
+	width: 20px;
+	height: 20px;
+	filter: brightness(0) invert(1);
+}
+
+.header-button {
+	height: 45px;
+}
+
+.setlistinvite {
+	background-color: #66ff66;
+}
+
+.bandinvite {
+	background-color: #ffcc66;
+}
+
+.block {
+	display: block;
+	margin-bottom: 20px;
+}
+
+.username {
+	height: 20px;
+}
+
+.userheader {
+	background-color: rgb(44 52 61 / 50%);
+}
+
+label {
+	width: 300px;
+}
+
+.overflow-500 {
+	max-height: 500px;
+	overflow: auto;
+}
+
+.overflow-200 {
+	max-height: 200px;
+	overflow: auto;
+}
+
+.overflow-400 {
+	max-height: 400px;
+	overflow: auto;
+}
+
+.border {
+    border: 2px solid #2c343d00!important;
+}
+
+.cardheader {
+	min-height : 50px;
+    background-color: #198754;
+}
+
+.waves-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.waves-top svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 120px;
+}
+
+.waves-top .shape-fill {
+    fill:  rgb(20, 128, 101);
+}
+
+.waves-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.waves-bottom svg {
+    position: relative;
+    display: block;
+    width: calc(123% + 1.3px);
+    height: 120px;
+    transform: rotateY(180deg);
+}
+
+
+.waves-bottom .shape-fill {
+    fill: rgb(20, 128, 101);
+}
+
+.carddims {
+	-ms-overflow-style: none;
+	/* IE and Edge */
+	scrollbar-width: none;
+	/* Firefox */
+    background-image: linear-gradient(to top, #272e38, #272e38), linear-gradient(to top, #272e38, #272e38), linear-gradient(to top, rgba(0, 0, 0, 0.25), rgba(255, 255, 255, 0)), linear-gradient(to bottom, rgba(0, 0, 0, 0.25), rgba(255, 255, 255, 0));
+    background-position: bottom center, top center, bottom center, top center;
+    background-color: #272e38;
+    background-repeat: no-repeat;
+    background-size: 100% 20px, 100% 20px, 100% 20px, 100% 20px;
+    background-attachment: local, local, scroll, scroll;
+}
+
+.carddims::-webkit-scrollbar {
+	display: none;
+}
+
+textarea {
+	display: block;
+	min-height: 200px;
+	width: 50%;
+	max-height: 60vh;
+	color: white;
+    background-color: #25292d8a;
+	overflow: auto;
+}
+
+.rendering-target {
+	font-family: monospace;
+	white-space: nowrap;
+	font-size: 1.2rem;
+	overflow-wrap: break-word;
+	hyphens: manual;
+	padding: 10px;
+	min-height: 200px;
+	width: 50%;
+	background-color: rgb(37 42 46 / 73%);
+	max-height: 60vh;
+	overflow: auto;
+}
+
+.rendering-target:empty:before {
+	content: "<Output...>";
+	font-style: italic;
+	text-align: center;
+	font-size: 1.2rem;
+	display: block;
+	padding: 20px 0;
+	color: #ccc;
+}
+
+.rendering-target .command_block {
+	padding-bottom: 10px;
+}
+
+.rendering-target .command_block h1 {
+	font-size: 1.8rem;
+	margin: 0;
+	padding: 0;
+}
+
+.rendering-target .command_block h4 {
+	font-size: 1.4rem;
+	margin: 0;
+	padding: 0;
+}
+
+.rendering-target .command_block em.comment {
+	display: block;
+}
+
+.rendering-target .lyric_block {
+	column-count: 2;
+}
+
+.rendering-target .lyric_block .line {
+	-webkit-column-break-inside: avoid;
+	/* Chrome, Safari */
+	page-break-inside: avoid;
+	/* Theoretically FF 20+ */
+	break-inside: avoid-column;
+	/* IE 11 */
+	display: table;
+	/* Actually FF 20+ */
+}
+
+.rendering-target .lyric_block .chord {
+	color: rgb(230, 36, 36);
+	font-weight: bold;
+}
+
+@media print {
+	.rendering-target {
+		padding: 0;
+		border: none;
+	}
+}
+
+.modal-lg {
+	min-width: 80%;
+	min-height: 75vh;
+}

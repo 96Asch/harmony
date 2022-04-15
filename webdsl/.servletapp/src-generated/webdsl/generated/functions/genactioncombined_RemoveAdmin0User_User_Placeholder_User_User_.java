@@ -1,0 +1,6 @@
+package webdsl.generated.functions;
+@SuppressWarnings("all")public class genactioncombined_RemoveAdmin0User_User_Placeholder_User_User_{
+public static Boolean genactioncombined_RemoveAdmin0User_User_Placeholder_User_User_(webdsl.generated.domain.User genuniquevar12_,webdsl.generated.domain.User genuniquevar13_,String genuniquevar14_,webdsl.generated.domain.User e_,webdsl.generated.domain.User u_){
+return webdsl.generated.functions.genactionpredicate_RemoveAdmin0User_User_.genactionpredicate_RemoveAdmin0User_User_(e_,u_)&&webdsl.generated.functions.genactionpredicate_memberButtonBar__0User_User_Placeholder_.genactionpredicate_memberButtonBar__0User_User_Placeholder_(genuniquevar12_,genuniquevar13_,genuniquevar14_);
+}
+}

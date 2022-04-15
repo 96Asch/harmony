@@ -1,0 +1,1 @@
+ModuleDefs("imported"{At("../imported.app",1,8)},[DefineTemplate([],"one"{At("../imported.app",3,10)},[]{At("../imported.app",3,14)},None{At("../imported.app",3,14)},[Text("1"{At("../imported.app",4,4)}){At("../imported.app",4,3)}]){At("../imported.app",3,1)}],[]){At("../imported.app",1,1)}

@@ -1,0 +1,1 @@
+("56b29075abaa16236fd08489216c0bb7d5e4a3cb",["src-generated/webdsl/generated/functions/numAvatars_.java"],Function("numAvatars",[],SimpleSort("Int"){DefValueAnno(Int("0"))},Block([Return(Int("6"){TypeAnno(SimpleSort("Int"){DefValueAnno(Int("0"))})})])){PositionAnno("../entities.app:151/2"),IsOptimized,At("../entities.app",151,1)})
