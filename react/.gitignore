@@ -21,3 +21,4 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+curl -d '{ "method" = "POST", "message" :  {"username":"asch", "password":"12345678"}}' -H "Content-Type: application/json" -X POST http://localhost:8080/harmony/api/login

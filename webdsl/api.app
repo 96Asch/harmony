@@ -1,6 +1,6 @@
 module api
 
-
+imports apivalidation
 routing {
   receive(urlargs:[String]) {
     log(baseUrl());
@@ -26,39 +26,29 @@ routing {
   }
 }
 
-function LoginResponse() : JSONObject {
+function Response() : JSONObject {
   var json := JSONObject("{}");
   json.put("message", JSONObject());
   json.put("errors", JSONArray());
   return json;
 }
 
-function AddError(response : JSONObject, message : String) : JSONObject {
-  response.getJSONArray("errors").put(message);
-  return response;
-}
-
-function IsValidUsername(request : JSONObject, response : JSONObject) : Bool {
-  var username := request.getString("username");
-  var ok := true;
-  if (username == null) { AddError(response, "Username was null"); ok := false;}
-  return ok;
-}
-
-function IsValidPassword(request : JSONObject, response : JSONObject) : Bool {
-  var password := request.getString("password");
-  var ok := true;
-  if (password == null) { AddError(response, "Password was null"); ok := false; }
-  if (password.length() < 8) { AddError(response, "Password must contain at least 8 characters"); ok := false;}
-  
-  return ok;
-}
 
 function loginRequest(response : JSONObject) : JSONObject {
-  if( getHttpMethod() != "POST" ) { return AddError(response, "Request must be of type: POST"); }
-  var request := JSONObject(readRequestBody()); //handle request
+  if ( getHttpMethod() != "POST" ) { return AddError(response, "Request must be of type: POST"); }
   
+  var requestBody := readRequestBody();
+  
+  if ( requestBody == null) { return AddError(response, "Request body was null"); }
+  
+  var request := JSONObject(requestBody); //handle request
+  log(request);
   if (request == null) { return AddError(response, "Request was null"); }
+  
+  if (!isValidRequest(request, response)) { return response; }
+  
+  request := request.getJSONObject("message");
+  
   if (!IsValidUsername(request, response) || !IsValidPassword(request, response)) { return response; }
 
   var username := request.getString("username");
@@ -67,18 +57,27 @@ function loginRequest(response : JSONObject) : JSONObject {
   if (!authenticate(username, password)) { return AddError(response, "Username and password do not match"); } 
   
   response.getJSONObject("message").put("username", username);
-  response.getJSONObject("message").put("username", username);
+  response.getJSONObject("message").put("password", password);
   
   return response;
 }
 
 
 service loginService() {
-  var response := LoginResponse();
-  loginRequest(response);
+  var response := Response();
+  response := loginRequest(response);
+  log(response);
   return response;
+}
+
+service testService() {
+  var json :=  Response();
+  json.put("messages", "Hello");
+  json.put("errore", "Nothing");
+  return json;
 }
 
 
 access control rules
 rule page loginService() { true }
+rule page testService() { true }

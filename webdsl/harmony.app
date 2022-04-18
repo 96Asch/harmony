@@ -141,7 +141,9 @@ ajax template Register(ph : Placeholder) {
       form[class="p-3"] {
         label("Username:")[class="d-block text-start" ]{ input(uname) [placeholder="username", class="form-control" ] }
         label("Email:")   [class="d-block text-start"] { input(email) [placeholder="example@email.com", class="form-control"] }
-        label("Password:")[class="d-block text-start"] { input(pass)  [class="form-control"] }
+        label("Password:")[class="d-block text-start"] { input(pass)  [class="form-control"] {
+         validate(pass.length() >= 8, "Password needs to be at least 8 characters")
+        }}
           
         submitlink action { 
           User {

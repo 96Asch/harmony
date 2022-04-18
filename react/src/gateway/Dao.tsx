@@ -36,12 +36,8 @@ export interface Notification {
     isAdmin  : boolean;
 }
 
-
-export function Dao(request : RequestType, data : HarmonyData) {
-    const dao = { 
-                    method : request,
-                    message : data
-                }
-    return dao;
+export interface DAO {
+    method : RequestType,
+    message : HarmonyData
 }
 
