@@ -1,23 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useEffect } from 'react';
 import './App.css';
 import Dashboard from './components/Dashboard'
 import { ThemeProvider, createTheme } from '@mui/material/styles';
-import { red } from '@mui/material/colors';
+import { HarmonyProvider } from './models/Provider';
 
 function App() {
 
-  const theme = createTheme({
-    palette: {
-      mode: 'light',
-    },
-  });
+   
+    
+    const theme = createTheme({
+        palette: {
+            mode: 'dark',
+        },
+    });
 
-  return (
-    <ThemeProvider theme={theme}>
-      <Dashboard/>
-    </ThemeProvider>
-  );
+
+
+    return (
+        <ThemeProvider theme={theme}>
+            <HarmonyProvider>
+                <Dashboard />
+            </HarmonyProvider>
+        </ThemeProvider>
+    );
 }
 
 export default App;

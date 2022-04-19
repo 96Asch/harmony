@@ -1,6 +1,8 @@
 module api
 
 imports apivalidation
+
+
 routing {
   receive(urlargs:[String]) {
     log(baseUrl());
@@ -33,31 +35,20 @@ function Response() : JSONObject {
   return json;
 }
 
-
 function loginRequest(response : JSONObject) : JSONObject {
-  if ( getHttpMethod() != "POST" ) { return AddError(response, "Request must be of type: POST"); }
-  
-  var requestBody := readRequestBody();
-  
-  if ( requestBody == null) { return AddError(response, "Request body was null"); }
-  
-  var request := JSONObject(requestBody); //handle request
-  log(request);
-  if (request == null) { return AddError(response, "Request was null"); }
-  
-  if (!isValidRequest(request, response)) { return response; }
-  
+  var request := getRequest(response);
   request := request.getJSONObject("message");
   
-  if (!IsValidUsername(request, response) || !IsValidPassword(request, response)) { return response; }
+  if (!isValidUsername(request, response) || !isValidPassword(request, response)) { return response; }
 
   var username := request.getString("username");
   var password := request.getString("password");
   
   if (!authenticate(username, password)) { return AddError(response, "Username and password do not match"); } 
   
+  response.getJSONObject("message").put("isLoggedIn", true);
   response.getJSONObject("message").put("username", username);
-  response.getJSONObject("message").put("password", password);
+  response.getJSONObject("message").put("token", principal.id);
   
   return response;
 }
@@ -66,18 +57,85 @@ function loginRequest(response : JSONObject) : JSONObject {
 service loginService() {
   var response := Response();
   response := loginRequest(response);
-  log(response);
   return response;
 }
 
-service testService() {
-  var json :=  Response();
-  json.put("messages", "Hello");
-  json.put("errore", "Nothing");
-  return json;
+function registerRequest(response : JSONObject) : JSONObject {
+  var request := getRequest(response);
+  request := request.getJSONObject("message");
+  
+  if (hasErrors(response)) { return response; }
+  if (!isValidUsername(request, response) || !isValidPassword(request, response)) { return response; }
+
+  var username := request.getString("username");
+  var password := request.getString("password") as Secret;
+  var email := request.getString("email") as Email;
+  
+  var newUser := User { 
+    username := username, 
+    password := password.digest(),
+    email    := email
+  };
+  
+  newUser.save();
+  
+  if (!isValidSave(response, newUser.validateSave())) { return response; }
+  return response;
+}
+
+service registerService() {
+  var response :=  Response();
+  response := registerRequest(response);
+  return response;
+}
+
+function notificationRequest(response : JSONObject) : JSONObject {
+  var request := getRequest(response);
+  var method := request.getString("method");
+  request := request.getJSONObject("message");
+  
+  if (!isSignedIn(request, response)) { return response; }
+    
+  var username := principal.username;
+  var notifications := from Notification as n where n.receiver.username = ~username;
+  case(method) {
+    "GET" {
+    
+      var nArray := JSONArray();
+      for (n in notifications) {
+        nArray.put(n.toJSON());
+      }
+      response.getJSONObject("message").put("notifications", nArray);
+    }
+    "DELETE" {
+      if (!isValidField("uuid", request, response)) { return response; }
+      var toDelete := request.getString("uuid").parseUUID();
+      if (toDelete == null) { return AddError(response, "Provided UUID is not a valid UUID"); }
+      
+      for (n in notifications) {
+        if (n.id == toDelete) {
+          notifications.remove(n);
+          n.delete();
+        }
+      }
+      
+    }
+    default {
+      AddError(response, "Invalid method: ~method");
+    }
+  }
+  
+  return response;
+}
+
+service notificationService() {
+  var response := Response();
+  response := notificationRequest(response);
+  return response;
 }
 
 
 access control rules
 rule page loginService() { true }
-rule page testService() { true }
+rule page registerService() { true }
+rule page notificationService() { true }

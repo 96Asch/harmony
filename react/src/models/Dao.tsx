@@ -1,7 +1,5 @@
-import internal from "stream";
-
 type HarmonyData = UserRegister | UserLogin | Song | {};
-type RequestType = "POST" | "GET" | "DELETE";
+type RequestType = "POST" | "GET" | "DELETE" | "PUT";
 
 export interface UserRegister {
     username: string;
