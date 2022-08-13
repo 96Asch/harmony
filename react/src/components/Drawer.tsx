@@ -116,7 +116,7 @@ export default function Drawer({ tab, setTab }: TabProp) {
     const mainListItems = (
         <>
             {drawerItems.map((item) =>  (
-                <Tooltip title={item.title} placement='right-start'>
+                <Tooltip title={item.title} placement='right-start' key={item.title}>
                     <ListItemButton selected={tab === item.tab} onClick={() => { OnListClick(item.tab) }}>
                         <ListItemIcon>
                             {item.icon}
